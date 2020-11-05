@@ -1,20 +1,24 @@
 #include <ncurses.h>
-#include <unistd.h>
+#include "./block.h"
 
-#define B (char)0x2588
-#define E '\0'
-#define CANVAS_LINES 5 
-#define CANVAS_COL 4
+char copy_grid(char src[LINES][COLS], char dest[LINES][COLS]) {
+  for (int i = 0; i < LINES; i++) {
+    for (int j = 0; j < COLS; j++) {
+      dest[i][j] = src[i][j];
+    }
+  }
+}
 
 char get_cell(char grid[LINES][COLS], ssize_t x, ssize_t y) {
   return x < 0 || y < 0 || x > COLS || y > LINES ? E : grid[x][y];
 }
 
-void render_grid(char grid[LINES][COLS], ssize_t x, ssize_t y) {
-  for (int i = 0; i < x; i++) {
-    for (int j = 0; j < y; j++) {
-      if (grid[i][j] != E) {
-        mvaddch(i, j, grid[i][j]); 
+void render_grid(char grid[LINES][COLS]) {
+  for (int i = 0; i < LINES; i++) {
+    for (int j = 0; j < COLS; j++) {
+      const char cell = grid[i][j];
+      if (cell == B) {
+        mvaddch(i, j, cell); 
       }
     }
   }
@@ -51,61 +55,45 @@ int count_neighbors(char grid[LINES][COLS], ssize_t x, ssize_t y) {
   return total;
 }
 
-void set_grid (char grid[LINES][COLS], ssize_t x, ssize_t y) {
-  for (int i = 0; i < x; i++) {
-    for (int j = 0; j < y; j++) {
+void set_grid (char grid[LINES][COLS]) {
+  char buff[LINES][COLS];
+  copy_grid(grid, buff);
+
+  for (int i = 0; i < LINES; i++) {
+    for (int j = 0; j < COLS; j++) {
       int num_neighbors = count_neighbors(grid, i, j);
 
       if (grid[i][j] == B) {
         if (num_neighbors < 2 || num_neighbors > 3) {
-          grid[i][j] = E;
+          buff[i][j] = E;
           return;
         }
       }
 
       if (grid[i][j] == E) {
         if (num_neighbors == 3) {
-          grid[i][j] = B;
+          buff[i][j] = B;
           return;
         }
       }
     }
   }
+
+  copy_grid(buff, grid);
 }
 
-int main() {
-  initscr();
-
-  char drawgrid[CANVAS_LINES][CANVAS_COL] = {
-    { E, E, E, E },
-    { E, E, B, E },
-    { E, E, B, E },
-    { E, E, B, E },
-    { E, E, E, E }
-  };
-
-  char grid[LINES][COLS];
-
-  // init grid
+void init_grid(char grid[LINES][COLS]) {
   for (int i = 0; i < LINES; i++) {
     for (int j = 0; j < COLS; j++) {
       grid[i][j] = E;
     }
   }
+}
 
+void canvas_projection(char canvas[CANVAS_LINES][CANVAS_COL], char grid[LINES][COLS]) {
   for (int i = 0; i < CANVAS_LINES; i++) {
     for (int j = 0; j < CANVAS_COL; j++) {
-      grid[i][j] = drawgrid[i][j];
+      grid[i][j] = canvas[i][j];
     }
   }
-
-  while (true) {
-    clear();
-    render_grid(grid, LINES, COLS);
-    refresh();
-    set_grid(grid, LINES, COLS);
-    sleep(1);
-  }
-
-	return 0;
 }
