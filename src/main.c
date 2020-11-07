@@ -22,7 +22,7 @@ int main() {
     render_grid(grid);
     refresh();
     set_grid(grid);
-    sleep(1);
+    usleep(250000);
   }
 
 	return 0;

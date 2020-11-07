@@ -10,7 +10,7 @@ char copy_grid(char src[LINES][COLS], char dest[LINES][COLS]) {
 }
 
 char get_cell(char grid[LINES][COLS], ssize_t x, ssize_t y) {
-  return x < 0 || y < 0 || x > COLS || y > LINES ? E : grid[x][y];
+  return x < 0 || y < 0 || x >= COLS || y >= LINES ? E : grid[x][y];
 }
 
 void render_grid(char grid[LINES][COLS]) {
@@ -48,10 +48,8 @@ int count_neighbors(char grid[LINES][COLS], ssize_t x, ssize_t y) {
 
   int total = 0;
   for (int i = 0; i < 8; i++) {
-    mvprintw(8 + i, 8, "occupation at %i: %i\n", i, occupations[i]);
     total = total + occupations[i];
   }
-
   return total;
 }
 
@@ -66,14 +64,14 @@ void set_grid (char grid[LINES][COLS]) {
       if (grid[i][j] == B) {
         if (num_neighbors < 2 || num_neighbors > 3) {
           buff[i][j] = E;
-          return;
+          continue;
         }
       }
 
       if (grid[i][j] == E) {
         if (num_neighbors == 3) {
           buff[i][j] = B;
-          return;
+          continue;
         }
       }
     }
