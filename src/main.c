@@ -6,11 +6,12 @@ int main() {
   initscr();
 
   char canvas[CANVAS_LINES][CANVAS_COL] = {
-    { E, E, E, E },
-    { E, E, B, E },
-    { E, E, B, E },
-    { E, E, B, E },
-    { E, E, E, E }
+    { E, E, E, E, E },
+    { E, E, B, E, E },
+    { E, E, E, B, E },
+    { E, B, B, B, E },
+    { E, E, E, E, E },
+    { E, E, E, E, E }
   };
   char grid[LINES][COLS];
 

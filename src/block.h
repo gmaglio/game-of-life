@@ -5,9 +5,9 @@
 
 #define E '\0'
 
-#define CANVAS_LINES 5 
+#define CANVAS_LINES 6
 
-#define CANVAS_COL 4
+#define CANVAS_COL 5
 
 char copy_grid(char src[LINES][COLS], char dest[LINES][COLS]);
 
