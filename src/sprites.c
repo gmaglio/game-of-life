@@ -39,7 +39,7 @@ const char lwss[SPRITE_LINES][SPRITE_COLS] = {
 
 const char pulsar[SPRITE_LINES][SPRITE_COLS] = {
   { E, E, E, E, E, E, E, E, E, E, E, E, E },
-  { E, E, E, E, E, E, E, E, E, E, E, E, E },
+  { E, E, E, B, B, B, E, E, E, B, B, B, E },
   { E, E, E, E, E, E, E, E, E, E, E, E, E },
   { E, E, E, E, E, E, B, E, B, E, E, E, E },
   { E, E, E, E, E, E, B, E, B, E, E, E, E },
@@ -51,6 +51,6 @@ const char pulsar[SPRITE_LINES][SPRITE_COLS] = {
   { E, E, E, E, E, E, B, E, B, E, E, E, E },
   { E, E, E, E, E, E, B, E, B, E, E, E, E },
   { E, E, E, E, E, E, E, E, E, E, E, E, E },
-  { E, E, E, E, E, E, E, E, E, E, E, E, E },
+  { E, E, E, B, B, B, E, E, E, B, B, B, E },
   { E, E, E, E, E, E, E, E, E, E, E, E, E }
 };
