@@ -1,6 +1,8 @@
 #ifndef __BLOCK_H__
 #define __BLOCK_H__
 
+#include <ncurses.h>
+
 #define B (char)0x2588
 
 #define E '\0'
@@ -8,6 +10,13 @@
 #define CANVAS_LINES 6
 
 #define CANVAS_COL 5
+
+// define color pairs
+#define GRASS_PAIR     1
+#define EMPTY_PAIR     1
+#define WATER_PAIR     2
+#define MOUNTAIN_PAIR  3
+#define PLAYER_PAIR    4
 
 char copy_grid(char src[LINES][COLS], char dest[LINES][COLS]);
 
@@ -24,7 +33,7 @@ void set_grid (char grid[LINES][COLS]);
 void init_grid(char grid[LINES][COLS]);
 
 void canvas_projection(
-  char canvas[CANVAS_LINES][CANVAS_COL],
+  const char canvas[CANVAS_LINES][CANVAS_COL],
   char grid[LINES][COLS]
 );
 

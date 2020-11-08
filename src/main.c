@@ -1,23 +1,30 @@
 #include <ncurses.h>
 #include <unistd.h>
 #include "./block.h"
+#include "./sprites.h"
 
 int main() {
   initscr();
+  if (has_colors() == FALSE) {
+    endwin();
+    printf("Your terminal does not support color\n");
+    return 1;
+  }
 
-  char canvas[CANVAS_LINES][CANVAS_COL] = {
-    { E, E, E, E, E },
-    { E, E, B, E, E },
-    { E, E, E, B, E },
-    { E, B, B, B, E },
-    { E, E, E, E, E },
-    { E, E, E, E, E }
-  };
+  curs_set(0);
+
+  start_color();
+  init_pair(GRASS_PAIR, COLOR_RED, COLOR_BLACK);
+  init_pair(WATER_PAIR, COLOR_CYAN, COLOR_BLUE);
+  init_pair(MOUNTAIN_PAIR, COLOR_BLACK, COLOR_WHITE);
+  init_pair(PLAYER_PAIR, COLOR_RED, COLOR_MAGENTA);
+
   char grid[LINES][COLS];
 
   init_grid(grid);
-  canvas_projection(canvas, grid);
+  canvas_projection(glider, grid);
 
+  attron(COLOR_PAIR(GRASS_PAIR));
   while (true) {
     clear();
     render_grid(grid);

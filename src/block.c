@@ -88,7 +88,7 @@ void init_grid(char grid[LINES][COLS]) {
   }
 }
 
-void canvas_projection(char canvas[CANVAS_LINES][CANVAS_COL], char grid[LINES][COLS]) {
+void canvas_projection(const char canvas[CANVAS_LINES][CANVAS_COL], char grid[LINES][COLS]) {
   for (int i = 0; i < CANVAS_LINES; i++) {
     for (int j = 0; j < CANVAS_COL; j++) {
       grid[i][j] = canvas[i][j];
