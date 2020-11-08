@@ -24,6 +24,7 @@ int main() {
   init_grid(grid);
   sprite_projection(glider, grid, 20, 20);
   sprite_projection(lwss, grid, 10, 0);
+  sprite_projection(pulsar, grid, 30, 0);
 
   attron(COLOR_PAIR(GRASS_PAIR));
   while (true) {

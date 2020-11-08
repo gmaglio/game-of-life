@@ -2,14 +2,10 @@
 #define __GOL_H__
 
 #include <ncurses.h>
+#include "sprites.h"
 
 #define B (char)0x2588
-
 #define E '\0'
-
-#define CANVAS_LINES 6
-
-#define CANVAS_COL 5
 
 // define color pairs
 #define GRASS_PAIR     1
@@ -33,7 +29,7 @@ void set_grid (char grid[LINES][COLS]);
 void init_grid(char grid[LINES][COLS]);
 
 void sprite_projection(
-  const char canvas[CANVAS_LINES][CANVAS_COL],
+  const char canvas[SPRITE_LINES][SPRITE_COLS],
   char grid[LINES][COLS],
   int x_start,
   int y_start
