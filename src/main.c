@@ -13,11 +13,13 @@ int main() {
 
   curs_set(0);
 
+  /*
   start_color();
   init_pair(GRASS_PAIR, COLOR_RED, COLOR_BLACK);
   init_pair(WATER_PAIR, COLOR_CYAN, COLOR_BLUE);
   init_pair(MOUNTAIN_PAIR, COLOR_BLACK, COLOR_WHITE);
   init_pair(PLAYER_PAIR, COLOR_RED, COLOR_MAGENTA);
+  */
 
   char grid[LINES][COLS];
 
@@ -26,9 +28,9 @@ int main() {
   sprite_projection(lwss, grid, 10, 0);
   sprite_projection(pulsar, grid, 30, 0);
 
-  attron(COLOR_PAIR(GRASS_PAIR));
+  // attron(COLOR_PAIR(GRASS_PAIR));
   int timer = 1000000;
-  float rate = .90;
+  float rate = 1;
   while (true) {
     clear();
     render_grid(grid);
