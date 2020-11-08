@@ -5,5 +5,6 @@
 #define SPRITE_COLS 5
 
 extern const char glider[SPRITE_LINES][SPRITE_COLS];
+extern const char lwss[SPRITE_LINES][SPRITE_COLS];
 
 #endif

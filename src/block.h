@@ -32,9 +32,11 @@ void set_grid (char grid[LINES][COLS]);
 
 void init_grid(char grid[LINES][COLS]);
 
-void canvas_projection(
+void sprite_projection(
   const char canvas[CANVAS_LINES][CANVAS_COL],
-  char grid[LINES][COLS]
+  char grid[LINES][COLS],
+  int x_start,
+  int y_start
 );
 
 #endif

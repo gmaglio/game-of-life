@@ -91,11 +91,13 @@ void init_grid(char grid[LINES][COLS]) {
 
 void sprite_projection(
   const char sprite[SPRITE_LINES][SPRITE_COLS],
-  char grid[LINES][COLS]
+  char grid[LINES][COLS],
+  int x_start,
+  int y_start
 ) {
   for (int i = 0; i < SPRITE_LINES; i++) {
     for (int j = 0; j < SPRITE_COLS; j++) {
-      grid[i][j] = sprite[i][j];
+      grid[i + y_start][j + x_start] = sprite[i][j];
     }
   }
 }
