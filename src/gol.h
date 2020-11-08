@@ -1,5 +1,5 @@
-#ifndef __BLOCK_H__
-#define __BLOCK_H__
+#ifndef __GOL_H__
+#define __GOL_H__
 
 #include <ncurses.h>
 

@@ -1,7 +1,7 @@
 #include <ncurses.h>
 #include <unistd.h>
-#include "./block.h"
-#include "./sprites.h"
+#include "gol.h"
+#include "sprites.h"
 
 int main() {
   initscr();

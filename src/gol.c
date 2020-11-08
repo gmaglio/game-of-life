@@ -1,5 +1,5 @@
 #include <ncurses.h>
-#include "./block.h"
+#include "gol.h"
 #include "sprites.h"
 
 char copy_grid(char src[LINES][COLS], char dest[LINES][COLS]) {

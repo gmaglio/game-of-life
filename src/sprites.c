@@ -1,5 +1,5 @@
 #include "sprites.h"
-#include "block.h"
+#include "gol.h"
 
 const char glider[SPRITE_LINES][SPRITE_COLS] = {
   { E, E, E, E, E },
