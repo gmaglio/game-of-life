@@ -22,7 +22,7 @@ int main() {
   char grid[LINES][COLS];
 
   init_grid(grid);
-  canvas_projection(glider, grid);
+  sprite_projection(glider, grid);
 
   attron(COLOR_PAIR(GRASS_PAIR));
   while (true) {
