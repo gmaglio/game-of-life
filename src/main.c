@@ -24,13 +24,13 @@ int main() {
   char grid[LINES][COLS];
 
   init_grid(grid);
-  sprite_projection(glider, grid, 0, 0);
-  sprite_projection(lwss, grid, 10, 0);
-  sprite_projection(pulsar, grid, 30, 0);
+  // sprite_projection(glider, grid, 0, 0);
+  // sprite_projection(lwss, grid, 10, 0);
+  sprite_projection(pulsar, grid, 0, 0);
 
   // attron(COLOR_PAIR(GRASS_PAIR));
-  int timer = 1000000;
-  float rate = 1;
+  int timer = 250000;
+  float rate = .99;
   while (true) {
     clear();
     render_grid(grid);
