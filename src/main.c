@@ -13,24 +13,21 @@ int main() {
 
   curs_set(0);
 
-  /*
   start_color();
   init_pair(GRASS_PAIR, COLOR_RED, COLOR_BLACK);
   init_pair(WATER_PAIR, COLOR_CYAN, COLOR_BLUE);
   init_pair(MOUNTAIN_PAIR, COLOR_BLACK, COLOR_WHITE);
   init_pair(PLAYER_PAIR, COLOR_RED, COLOR_MAGENTA);
-  */
 
   char grid[LINES][COLS];
 
   init_grid(grid);
-  // sprite_projection(glider, grid, 0, 0);
-  // sprite_projection(lwss, grid, 10, 0);
-  sprite_projection(pulsar, grid, 0, 0);
+  sprite_projection(glider, grid, 0, 0);
+  sprite_projection(pulsar, grid, 10, 10);
 
-  // attron(COLOR_PAIR(GRASS_PAIR));
+  attron(COLOR_PAIR(GRASS_PAIR));
   int timer = 250000;
-  float rate = .99;
+  float rate = 1;
   while (true) {
     clear();
     render_grid(grid);

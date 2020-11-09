@@ -9,10 +9,10 @@
 
 // define color pairs
 #define GRASS_PAIR     1
-#define EMPTY_PAIR     1
-#define WATER_PAIR     2
-#define MOUNTAIN_PAIR  3
-#define PLAYER_PAIR    4
+#define EMPTY_PAIR     2
+#define WATER_PAIR     3
+#define MOUNTAIN_PAIR  4
+#define PLAYER_PAIR    5
 
 char copy_grid(char src[LINES][COLS], char dest[LINES][COLS]);
 
