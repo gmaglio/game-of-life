@@ -1,6 +1,8 @@
 #include <ncurses.h>
+#include <stdlib.h>
 #include "gol.h"
 #include "sprites.h"
+#include "color-helpers.h"
 
 char copy_grid(char src[LINES][COLS], char dest[LINES][COLS]) {
   for (int i = 0; i < LINES; i++) {
@@ -19,6 +21,8 @@ void render_grid(char grid[LINES][COLS]) {
     for (int j = 0; j < COLS; j++) {
       const char cell = grid[i][j];
       if (cell == B) {
+        const int color = (rand() + 4) % 5;
+        setcolor(color, color);
         mvaddch(i, j, cell); 
       }
     }

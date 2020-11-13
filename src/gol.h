@@ -4,15 +4,8 @@
 #include <ncurses.h>
 #include "sprites.h"
 
-#define B (char)0x2588
+#define B 'B' // (char)0x2588
 #define E '\0'
-
-// define color pairs
-#define GRASS_PAIR     1
-#define EMPTY_PAIR     2
-#define WATER_PAIR     3
-#define MOUNTAIN_PAIR  4
-#define PLAYER_PAIR    5
 
 char copy_grid(char src[LINES][COLS], char dest[LINES][COLS]);
 

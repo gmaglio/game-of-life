@@ -1,10 +1,16 @@
 #include <ncurses.h>
 #include <unistd.h>
+#include <math.h>
 #include "gol.h"
 #include "sprites.h"
+#include "color-helpers.h"
 
 int main() {
   initscr();
+  keypad(stdscr, TRUE);
+  cbreak();
+  noecho();
+
   if (has_colors() == FALSE) {
     endwin();
     printf("Your terminal does not support color\n");
@@ -14,10 +20,7 @@ int main() {
   curs_set(0);
 
   start_color();
-  init_pair(GRASS_PAIR, COLOR_RED, COLOR_BLACK);
-  init_pair(WATER_PAIR, COLOR_CYAN, COLOR_BLUE);
-  init_pair(MOUNTAIN_PAIR, COLOR_BLACK, COLOR_WHITE);
-  init_pair(PLAYER_PAIR, COLOR_RED, COLOR_MAGENTA);
+  init_colorpairs();
 
   char grid[LINES][COLS];
 
@@ -25,8 +28,7 @@ int main() {
   sprite_projection(glider, grid, 0, 0);
   sprite_projection(pulsar, grid, 10, 10);
 
-  attron(COLOR_PAIR(GRASS_PAIR));
-  int timer = 250000;
+  int timer = 100000;
   float rate = 1;
   while (true) {
     clear();
