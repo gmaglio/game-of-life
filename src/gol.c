@@ -13,7 +13,7 @@ char copy_grid(char src[LINES][COLS], char dest[LINES][COLS]) {
 }
 
 char get_cell(char grid[LINES][COLS], ssize_t x, ssize_t y) {
-  return x < 0 || y < 0 || x >= COLS || y >= LINES ? E : grid[x][y];
+  return y < 0 || x < 0 || y >= COLS || x >= LINES ? E : grid[x][y];
 }
 
 void render_grid(char grid[LINES][COLS]) {
@@ -21,7 +21,9 @@ void render_grid(char grid[LINES][COLS]) {
     for (int j = 0; j < COLS; j++) {
       const char cell = grid[i][j];
       if (cell == B) {
-        const int color = (rand() + 4) % 5;
+        const int min = 3;
+        const int max = 4;
+        const int color = rand() % (max - min + 1) + min;
         setcolor(color, color);
         mvaddch(i, j, cell); 
       }

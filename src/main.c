@@ -25,11 +25,11 @@ int main() {
   char grid[LINES][COLS];
 
   init_grid(grid);
-  sprite_projection(glider, grid, 0, 0);
-  sprite_projection(pulsar, grid, 10, 10);
+  sprite_projection(glider, grid, 45, 0);
+  sprite_projection(pulsar, grid, floor(COLS / 2), floor(LINES / 2));
 
   int timer = 100000;
-  float rate = 1;
+  float rate = .999;
   while (true) {
     clear();
     render_grid(grid);
